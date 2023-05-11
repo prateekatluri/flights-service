@@ -1,31 +1,30 @@
+const { logger } = require("../config");
+
 class CrudRepository {
   constructor(model) {
     this.model = model;
   }
 
   async create(data) {
-    try {
-      const response = await this.model.create(data);
-      return response;
-    } catch (err) {
-      console.log("error at create");
-      throw err;
-    }
+    const response = await this.model.create(data);
+    return response;
   }
   async getAll() {
     try {
       const response = await this.model.findAll();
       return response;
-    } catch (err) {
-      console.log("error at findall");
+    } catch (error) {
+      logger.error("error at findall");
+      throw error;
     }
   }
   async get(data) {
     try {
       const response = await this.model.findByPk(data);
       return response;
-    } catch (err) {
-      console.log("error at findpk");
+    } catch (error) {
+      logger.error("error at findpk");
+      throw error;
     }
   }
   async delete(data) {
@@ -36,8 +35,9 @@ class CrudRepository {
         },
       });
       return response;
-    } catch (err) {
-      console.log("error at delete");
+    } catch (error) {
+      logger.error("error at delete");
+      throw error;
     }
   }
   async update(id, data) {
@@ -48,8 +48,9 @@ class CrudRepository {
         },
       });
       return response;
-    } catch (err) {
-      console.log("error at update");
+    } catch (error) {
+      logger.error("error at update");
+      throw error;
     }
   }
 }
