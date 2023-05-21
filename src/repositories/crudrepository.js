@@ -14,6 +14,7 @@ class CrudRepository {
 
   async getAll() {
     const response = await this.model.findAll();
+    console.log(response)
     return response;
   }
   async getByPk(data) {
@@ -32,16 +33,15 @@ class CrudRepository {
       throw new AppError("No such id exists to delete", StatusCodes.NOT_FOUND);
     return response;
   }
-  async update({ id, capacity }) {
+  async update({id,data}) {
     const response = await this.model.update(
-      { capacity: capacity },
+      data,
       {
         where: {
           id: id,
         },
       }
     );
-    console.log(response)
     if (response[0] === 0)
       throw new AppError("No such id exists", StatusCodes.NOT_FOUND);
     return response;

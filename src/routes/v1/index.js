@@ -1,11 +1,17 @@
-const express = require("express")
-const router = express.Router()
-const AirplaneRoutes = require("./airplane-route")
-const {logger} = require("../../config")
+const express = require("express");
+const router = express.Router();
+const AirplaneRoutes = require("./airplane-route");
+const CityRoutes = require("./city-route");
+const { logger } = require("../../config");
 
-logger.info("inside v1 routes")
-router.use("/airplanes",AirplaneRoutes)
+logger.info("inside v1 routes");
 
-router.get("/",()=>{})
+// Routes for Airplane
+router.use("/airplanes", AirplaneRoutes);
 
-module.exports = router
+// Routes for Cities
+router.use("/cities", CityRoutes);
+
+router.get("/", () => {});
+
+module.exports = router;
