@@ -8,10 +8,10 @@ async function createCity(req, res) {
       name: req.body.name,
     });
     successResponse.data = data;
-    res.status(StatusCodes.OK).json(successResponse);
+    return res.status(StatusCodes.OK).json(successResponse);
   } catch (error) {
     errorResponse.error = error;
-    res.status(error.statuscode).json(errorResponse);
+    return res.status(error.statuscode).json(errorResponse);
   }
 }
 
@@ -24,10 +24,10 @@ async function getAllCities(req, res) {
   try {
     const data = await CityService.getAllCities();
     successResponse.data = data;
-    res.status(StatusCodes.OK).json(successResponse);
+    return res.status(StatusCodes.OK).json(successResponse);
   } catch (error) {
     errorResponse.error = error;
-    res.status(error.statuscode).json(errorResponse);
+    return res.status(error.statuscode).json(errorResponse);
   }
 }
 
@@ -40,10 +40,10 @@ async function getCity(req, res) {
   try {
     const data = await CityService.getCity(req.params.id);
     successResponse.data = data;
-    res.status(StatusCodes.OK).json(successResponse);
+    return res.status(StatusCodes.OK).json(successResponse);
   } catch (error) {
     errorResponse.error = error;
-    res.status(error.statuscode).json(errorResponse);
+    return res.status(error.statuscode).json(errorResponse);
   }
 }
 
@@ -56,10 +56,10 @@ async function deleteCity(req, res) {
   try {
     const data = await CityService.deleteCity(req.params.id);
     successResponse.data = data;
-    res.status(StatusCodes.OK).json(successResponse);
+    return res.status(StatusCodes.OK).json(successResponse);
   } catch (error) {
     errorResponse.error = error;
-    res.status(error.statuscode).json(errorResponse);
+    return res.status(error.statuscode).json(errorResponse);
   }
 }
 
