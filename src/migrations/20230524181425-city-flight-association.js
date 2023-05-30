@@ -29,6 +29,7 @@ module.exports = {
      * Example:
      * await queryInterface.dropTable('users');
      */
+    await queryInterface.removeConstraint("Airports","city-fk")
   },
 };
 
