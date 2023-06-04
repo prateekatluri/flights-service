@@ -31,6 +31,7 @@ async function getAllAirplanes(req, res) {
   try {
     const data = await AirplaneService.getAllAirplanes();
     successResponse.data = data;
+    successResponse.message = "successfully fetched all airplane";
     return res.status(StatusCodes.OK).json(successResponse);
   } catch (error) {
     errorResponse.error = error;
@@ -47,6 +48,7 @@ async function getAirplane(req, res) {
   try {
     const data = await AirplaneService.getAirplane(req.params.id);
     successResponse.data = data;
+    successResponse.message = "successfully fetched airplane";
     return res.status(StatusCodes.OK).json(successResponse);
   } catch (error) {
     errorResponse.error = error;
@@ -63,6 +65,7 @@ async function deleteAirplane(req, res) {
   try {
     const data = await AirplaneService.deleteAirplane(req.params.id);
     successResponse.data = data;
+    successResponse.message = "successfully deleted airplane";
     return res.status(StatusCodes.OK).json(successResponse);
   } catch (error) {
     errorResponse.error = error;
