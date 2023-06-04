@@ -14,13 +14,12 @@ class CrudRepository {
 
   async getAll() {
     const response = await this.model.findAll();
-    console.log(response)
+    console.log(response);
     return response;
   }
   async getByPk(data) {
     const response = await this.model.findByPk(data);
-    if (!response)
-      throw new AppError("airplane id not found", StatusCodes.NOT_FOUND);
+    if (!response) throw new AppError(" id not found", StatusCodes.NOT_FOUND);
     return response;
   }
   async delete(data) {
@@ -33,15 +32,12 @@ class CrudRepository {
       throw new AppError("No such id exists to delete", StatusCodes.NOT_FOUND);
     return response;
   }
-  async update({id,data}) {
-    const response = await this.model.update(
-      data,
-      {
-        where: {
-          id: id,
-        },
-      }
-    );
+  async update({ id, data }) {
+    const response = await this.model.update(data, {
+      where: {
+        id: id,
+      },
+    });
     if (response[0] === 0)
       throw new AppError("No such id exists", StatusCodes.NOT_FOUND);
     return response;
