@@ -8,6 +8,7 @@ async function createCity(req, res) {
       name: req.body.name,
     });
     successResponse.data = data;
+    successResponse.message = "successfully created city";
     return res.status(StatusCodes.OK).json(successResponse);
   } catch (error) {
     errorResponse.error = error;
@@ -24,6 +25,7 @@ async function getAllCities(req, res) {
   try {
     const data = await CityService.getAllCities();
     successResponse.data = data;
+    successResponse.message = "successfully fetched all city";
     return res.status(StatusCodes.OK).json(successResponse);
   } catch (error) {
     errorResponse.error = error;
@@ -40,6 +42,7 @@ async function getCity(req, res) {
   try {
     const data = await CityService.getCity(req.params.id);
     successResponse.data = data;
+    successResponse.message = "successfully fetched city";
     return res.status(StatusCodes.OK).json(successResponse);
   } catch (error) {
     errorResponse.error = error;
@@ -56,6 +59,7 @@ async function deleteCity(req, res) {
   try {
     const data = await CityService.deleteCity(req.params.id);
     successResponse.data = data;
+    successResponse.message = "successfully deleted city";
     return res.status(StatusCodes.OK).json(successResponse);
   } catch (error) {
     errorResponse.error = error;
