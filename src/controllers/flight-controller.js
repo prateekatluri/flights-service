@@ -5,15 +5,20 @@ const { successResponse, errorResponse } = require("../utils/common");
 /**
  *
  * POST
- * *params: name code address cityId
+ * 
  */
 async function createFlight(req, res) {
   try {
-    const data = await AirportService.createFlight({
-        name: req.body.name,
-        code: req.body.code,
-        address: req.body.address,
-        cityId: req.body.cityId,
+    const data = await FlightService.createFlight({
+      FlightNumber: req.body.FlightNumber,
+      airplaneId: req.body.airplaneId,
+      departureAirport: req.body.departureAirport,
+      arrivalAirport: req.body.arrivalAirport,
+      arrivalTime:req.body.arrivalTime,
+      departureTime:req.body.departureTime,
+      price:req.body.price,
+      boardingGate:req.body.boardingGate,
+      totalSeats:req.body.totalSeats,
     });
     successResponse.data = data;
     successResponse.message = "successfully created Flight";
